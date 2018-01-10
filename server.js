@@ -67,9 +67,22 @@ app.get('/',(req,res)=>{
 app.get('/login',(req,res)=>{
   res.setHeader('Content-type','text/html');
   res.write(`<h1>Login</h1>`);
-  if(req.cookies.logInFailed) res.write('<p>logIn Failed</p>');
+  if(req.cookies.logInFailed) res.write('<p>Login Failed</p>');
   res.write('<form method="POST"> <input name="userName"><br><input type="submit"></form>');
   res.end();
+});
+
+app.post('/login',(req,res)=>{
+  let user = _registeredUsers.find(u=>u.userName==req.body.userName);
+  if(!user) {
+    res.setHeader('Set-Cookie',`logInFailed=true`);
+    res.redirect('/login');
+    return;
+  }
+  let sessionid = new Date().getTime();
+  res.setHeader('Set-Cookie',`sessionid=${sessionid}`);
+  user.sessionid = sessionid;
+  res.redirect('/guestBook.html');
 });
 
 let server=http.createServer(app);
