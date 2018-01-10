@@ -85,6 +85,13 @@ app.post('/login',(req,res)=>{
   res.redirect('/guestBook.html');
 });
 
+app.get('/logout',(req,res)=>{
+  res.setHeader('Set-Cookie',[`loginFailed=false`,`sessionid=0`]);
+  delete req.user.sessionid;
+  res.redirect('/guestBook.html');
+});
+
+
 let server=http.createServer(app);
 server.listen(PORT);
 console.log(`Listening to port ${PORT}.......`);
