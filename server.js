@@ -91,6 +91,14 @@ app.get('/logout',(req,res)=>{
   res.redirect('/guestBook.html');
 });
 
+app.post('/comment',(req,res)=>{
+  if (req.user) {
+    storeComments(req.body);
+    res.redirect('/guestBook.html');
+    return ;
+  }
+  res.redirect('/login');
+})
 
 let server=http.createServer(app);
 server.listen(PORT);
