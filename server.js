@@ -64,6 +64,14 @@ app.get('/',(req,res)=>{
   res.redirect('/home.html');
 });
 
+app.get('/login',(req,res)=>{
+  res.setHeader('Content-type','text/html');
+  res.write(`<h1>Login</h1>`);
+  if(req.cookies.logInFailed) res.write('<p>logIn Failed</p>');
+  res.write('<form method="POST"> <input name="userName"><br><input type="submit"></form>');
+  res.end();
+});
+
 let server=http.createServer(app);
 server.listen(PORT);
 console.log(`Listening to port ${PORT}.......`);
