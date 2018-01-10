@@ -1,0 +1,59 @@
+.heading{
+  height: auto;
+  width:95%
+}
+
+.image{
+  height: 85%;
+  width :65%;
+  float: left;
+}
+
+.contents{
+ float: left;
+ height:100%;
+ width: 30%;
+}
+
+.container{
+  width:95%;
+  height: 750px;
+}
+
+#links{
+  text-align: left;
+  margin-top: 300px;
+}
+
+#mainHeading{
+  text-align: right;
+  color: orange;
+}
+
+.part{
+  height: 100%;
+  float: left;
+  width: 50%;
+}
+
+h1{
+  text-align: center;
+  color: orange;
+}
+
+table{
+  border: 1px solid black;
+  width: 100%;
+  height:auto;
+  text-align: center;
+}
+
+th{
+  border: 3px solid black;
+}
+
+td{
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
